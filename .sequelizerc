@@ -1,0 +1,13 @@
+const path = require("path");
+
+module.exports = {
+  // Tells the CLI where to find your database settings (fixes your first error)
+  config: path.resolve("src", "config", "config.json"),
+
+  // Tells the CLI where to put your models (fixes your current error)
+  "models-path": path.resolve("src", "models"),
+
+  // Also configure other Sequelize component paths to prevent future errors
+  "seeders-path": path.resolve("src", "seeders"),
+  "migrations-path": path.resolve("src", "migrations"),
+};
