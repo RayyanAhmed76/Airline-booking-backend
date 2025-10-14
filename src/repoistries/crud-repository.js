@@ -1,4 +1,4 @@
-const { Logger } = require("../config/logger-config");
+const Logger = require("../config/logger-config");
 class CrudRepository {
   constructor(model) {
     this.model = model;
@@ -9,6 +9,8 @@ class CrudRepository {
       const response = await this.model.create(data);
       return response;
     } catch (error) {
+      console.log("Logger is:", Logger);
+
       Logger.error("something went wrong in crud repo: create");
       throw error;
     }
