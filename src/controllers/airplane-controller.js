@@ -48,4 +48,24 @@ async function deleteAirplane(req, res) {
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
-module.exports = { CreateAirplane, getAirplanes, getAirplane, deleteAirplane };
+
+async function updateAirplane(req, res) {
+  try {
+    const airplanes = await Airplaneservice.updateAirplane(
+      req.body.capacity,
+      req.params.id
+    );
+    successResponse.data = airplanes;
+    return res.status(StatusCodes.OK).json(successResponse);
+  } catch (error) {
+    ErrorResponse.detailerror = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+module.exports = {
+  CreateAirplane,
+  getAirplanes,
+  getAirplane,
+  deleteAirplane,
+  updateAirplane,
+};

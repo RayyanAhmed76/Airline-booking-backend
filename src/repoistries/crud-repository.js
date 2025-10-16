@@ -40,11 +40,14 @@ class CrudRepository {
   }
 
   async update(data, id) {
-    const response = await this.model.update(data, {
+    const [response] = await this.model.update(data, {
       where: {
         id: id,
       },
     });
+    if (response === 0) {
+      throw new Apperror("Airplane does not exist!", StatusCodes.NOT_FOUND);
+    }
     return response;
   }
 }
